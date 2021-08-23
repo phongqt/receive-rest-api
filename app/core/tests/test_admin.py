@@ -1,4 +1,3 @@
-from django import urls
 from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -29,12 +28,11 @@ class AdminSiteTest(TestCase):
     def test_user_change_page(self):
         """Test that the user edit page works"""
         url = reverse('admin:core_user_change', args=[self.user.id])
-        res = self.client.get(url)        
+        res = self.client.get(url)
         self.assertEqual(res.status_code, 200)
 
-    def  test_create_user_page(self):
+    def test_create_user_page(self):
         """Test that the user create page works"""
         url = reverse('admin:core_user_add')
         res = self.client.get(url)
         self.assertEqual(res.status_code, 200)
-        
